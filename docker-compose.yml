@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+
+  api:
+    container_name: api
+    build:
+      context: ./
+      dockerfile: ./api/Dockerfile
+    volumes:
+      - './api:/usr/src/app'
+    ports:
+      - 5000:5000
+    environment:
+      - APP_SETTINGS=config.DevelopConfig
+      - DATABASE_URL=postgres://postgres:postgres@users-db:5432/dev_db
+      - DATABASE_TEST_URL=postgres://postgres:postgres@users-db:5432/test_db
+    depends_on:
+      - users-db
+    links:
+      - users-db
+  users-db:
+    container_name: users-db
+    build:
+      context: ./api/db/
+      dockerfile: Dockerfile
+    ports:
+      - 5435:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    
