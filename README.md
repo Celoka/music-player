@@ -1,4 +1,4 @@
-#### Music Player
+# Music Player
 This repository contains the source code of Music Player, an app built using Flask and React where users can create music artists profile. This enables users to visit the application and perform basic CRUD. The users will have a level of authorization before they can perform some of the operations. 
 
 ### Getting Started
