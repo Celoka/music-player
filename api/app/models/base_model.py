@@ -13,7 +13,6 @@ class BaseModel(db.Model):
 
 
     def save(self):
-
         try:
             db.session.add(self)
             db.session.commit()
